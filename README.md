@@ -51,7 +51,7 @@ WHERE f.`length` > (
 	select AVG(f2.`length`) 
 	from film f2);
 
-* SELECT EXTRACT(MONTH FROM p.payment_date) AS payment_month, 
+* SELECT DATE_FORMAT(p.payment_date, '%Y-%M') AS payment_month, 
 SUM(p.amount) AS total_amount, COUNT(r.rental_id) AS count_rentals 
 FROM payment p 
 JOIN rental r ON p.rental_id = r.rental_id 
@@ -59,3 +59,4 @@ GROUP BY payment_month
 ORDER BY total_amount 
 DESC  
 limit 1;
+
